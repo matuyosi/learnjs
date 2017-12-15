@@ -6,19 +6,14 @@
  * We make no guarantees that this code is fit for any purpose.
  * Visit http://www.pragmaticprogrammer.com/titles/brapps for more book information.
 ***/
-describe('lambda function', function() {
-  var index = require('index');
-  var context;
-
-  beforeEach(function() {
-    context = jasmine.createSpyObj('context', ['succeed']);
+describe('LearnJS', function() {
+  it('can show a problem view', function() {
+    learnjs.showView('#problem-1');
+    expect($('.view-container .problem-view').length).toEqual(1);
   });
 
-  describe('echo', function() {
-    it('returns a result', function() {
-      index.echo({}, context);
-      expected = ["Hello from the cloud! You sent {}"];
-      expect(context.succeed).toHaveBeenCalledWith(expected);
-    });
+  it('shows the landing page view when there is no hash', function() {
+    learnjs.showView('');
+    expect($('.view-container .landing-view').length).toEqual(1);
   });
 });
